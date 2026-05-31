@@ -1,0 +1,422 @@
+/* ================================================================
+   HERO — 2 columnas, max-width 1320px
+   ================================================================ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.42fr 0.78fr;
+  gap: clamp(20px, 3vw, 52px);
+  align-items: center;
+  padding: clamp(4px, 0.8vh, 10px) clamp(20px, 4vw, 46px) clamp(32px, 5vh, 52px);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+@media (max-width: 920px) {
+  .hero { grid-template-columns: 1fr; gap: 32px; padding-top: 72px; }
+}
+
+/* ── Columna izquierda ── */
+.left { display: flex; flex-direction: column; }
+
+/* Eyebrow */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+.eyebrowXeno { color: var(--xeno); }
+
+/* H1 — reducido para caber en pantalla */
+.h1 {
+  font-family: var(--disp);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.lnA,
+.lnB {
+  display: block;
+  font-size: clamp(32px, 4.8vw, 72px);
+}
+
+/* lnA: sin glow en ningún estado */
+.lnA { color: var(--txt); }
+
+/* lnB: sin glow en estado bloqueado, glow aparece al desbloquear */
+.lnB {
+  color: var(--xeno);
+  text-shadow: none;
+  transition: text-shadow .9s ease, color .9s ease;
+}
+
+.lnBUnlocked {
+  text-shadow: 0 0 28px var(--glow);
+}
+
+/* Subtítulo */
+.sub {
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--dim);
+  max-width: 60ch;
+  letter-spacing: 0.03em;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.subXeno {
+  color: var(--xeno);
+  font-weight: 700;
+}
+
+.sub b { color: var(--txt); }
+
+/* ── Ficha / dossier card ── */
+.file {
+  margin-top: 20px;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: 0 0 40px -20px var(--glow);
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.file.scanning::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(77, 255, 176, 0.35), transparent);
+  animation: sweep 1.3s linear;
+}
+
+@keyframes sweep {
+  from { top: -60px; }
+  to   { top: 100%; }
+}
+
+.fhd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.cls {
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.rows {
+  padding: 14px 16px 4px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 18px;
+  font-size: 12px;
+}
+
+@media (max-width: 400px) {
+  .rows { grid-template-columns: 1fr; gap: 3px; }
+}
+
+.k {
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  padding-top: 1px;
+}
+
+.v { color: var(--txt); }
+.vGreen { color: var(--xeno); }
+
+/* Texto cifrado — bloques verdes apagados */
+.cipher {
+  color: var(--xeno-dim);
+  background: rgba(60, 120, 90, 0.18);
+  border-radius: 2px;
+  padding: 1px 4px;
+  letter-spacing: 0.05em;
+  font-size: 0.95em;
+  filter: blur(0.6px);
+  user-select: none;
+}
+
+.scanbtnwrap { padding: 6px 16px 16px; }
+
+/* ── Botón: pulsación en estado bloqueado, único elemento que brilla ── */
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 6px -2px var(--xeno); }
+  50%       { box-shadow: 0 0 16px 0px var(--xeno), 0 0 28px -6px var(--xeno); }
+}
+
+.accessbtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #04130d;
+  font-weight: 700;
+  background: var(--xeno);
+  border: 0;
+  border-radius: 10px;
+  padding: 14px;
+  /* Pulsa continuamente en estado bloqueado para guiar al usuario */
+  animation: btnPulse 2.2s ease-in-out infinite;
+  transition: filter .2s ease, color .9s ease, background-color .9s ease;
+}
+
+/* Al desbloquear: deja de pulsar, vuelve al glow normal */
+body.unlocked .accessbtn {
+  animation: none;
+  box-shadow: 0 0 30px -6px var(--glow);
+}
+
+.accessbtn:hover:not(:disabled) { filter: brightness(1.1); }
+.accessbtn:disabled { cursor: default; opacity: 0.7; animation: none; }
+
+.fp { width: 16px; height: 16px; flex-shrink: 0; }
+
+.scanmsg {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 10px;
+  min-height: 13px;
+}
+
+/* Cue scroll */
+.cue {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ar { animation: bob 1.6s infinite; }
+@keyframes bob { 50% { transform: translateY(4px); } }
+
+/* ── Columna derecha ── */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (max-width: 920px) {
+  .right { order: -1; flex-direction: row; flex-wrap: wrap; gap: 20px; justify-content: center; }
+}
+
+@media (max-width: 540px) {
+  .right { flex-direction: column; }
+}
+
+/* ── Polaroid ── */
+.polaroid {
+  position: relative;
+  width: min(300px, 78vw);
+  background: var(--paper);
+  padding: 14px 14px 0;
+  border-radius: 3px;
+  transform: rotate(2.2deg);
+  box-shadow: 0 24px 52px -16px rgba(0, 0, 0, 0.78);
+  /* Sin glow propio en estado bloqueado */
+  transition: transform .3s ease, box-shadow .3s ease, background-color .9s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 30px 60px -16px rgba(0, 0, 0, 0.88);
+}
+
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 96px;
+  height: 24px;
+  background: rgba(150, 170, 150, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  display: block;
+  transition: background-color .9s ease;
+}
+
+body.unlocked .tape { background: rgba(190, 210, 180, 0.32); }
+
+.photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  background: #0c1512;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: var(--photo-filter);
+  transition: filter 1.1s ease;
+}
+
+/* Photo-lock overlay */
+.photoLock {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background:
+    repeating-linear-gradient(45deg, rgba(82, 230, 166, 0.05) 0 10px, transparent 10px 20px),
+    #0c1512;
+  color: var(--xeno);
+  transition: opacity .9s ease;
+}
+
+.sil {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.14;
+}
+
+.sil svg { width: 55%; color: var(--xeno); }
+
+.qm {
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 1;
+  text-shadow: none;       /* sin glow en el "?" */
+  position: relative;
+  z-index: 1;
+  transition: color .9s ease;
+}
+
+.lockLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--xeno-dim);
+  position: relative;
+  z-index: 1;
+}
+
+/* Caption manuscrito */
+.pcap {
+  font-family: var(--hand);
+  font-size: 20px;
+  color: #2a2118;
+  text-align: center;
+  padding: 8px 0 12px;
+  line-height: 1;
+  transition: color .9s ease;
+}
+
+.pcap small {
+  display: block;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: #6b6f64;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+body.unlocked .pcap { color: #2a2118; }
+
+/* Sello TOP SECRET — esquina derecha del polaroid, por encima del borde */
+.stampGranted {
+  position: absolute;
+  right: -10px;
+  bottom: 52px;
+  z-index: 20;
+  font-family: var(--disp);
+  font-weight: 900;
+  font-size: clamp(11px, 1.3vw, 14px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 2.5px solid var(--stamp);
+  border-radius: 3px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  transform: rotate(-12deg) scale(1.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .7s ease, transform .8s cubic-bezier(.22,.61,.36,1), color .9s ease, border-color .9s ease;
+}
+
+.stampVisible {
+  opacity: 0.92;
+  transform: rotate(-12deg) scale(1);
+}
+
+/* ── Sello circular — sin glow en locked ── */
+.seal {
+  width: 110px;
+  height: 110px;
+  color: var(--xeno);
+  filter: none;           /* sin drop-shadow en estado bloqueado */
+  animation: rotateSeal 60s linear infinite;
+  transition: color .9s ease, filter .9s ease;
+}
+
+body.unlocked .seal {
+  filter: drop-shadow(0 0 12px var(--glow));
+}
+
+@keyframes rotateSeal {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (max-width: 540px) {
+  .seal { width: 80px; height: 80px; }
+  .qm { font-size: 56px; }
+}

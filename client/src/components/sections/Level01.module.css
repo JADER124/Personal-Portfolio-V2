@@ -1,0 +1,132 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── Grid de identidad ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.cell {
+  background: var(--panel);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.cellLabel {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cellValue {
+  font-size: 15px;
+  color: var(--txt);
+  font-family: var(--disp);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── Educación ── */
+.eduSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eduHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.eduEyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--xeno);
+  white-space: nowrap;
+}
+
+.eduLine {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.eduList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eduRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.eduRow:hover {
+  border-color: var(--line-2);
+  background: rgba(77, 255, 176, 0.03);
+}
+
+.eduMain {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.eduDegree {
+  font-family: var(--disp);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--txt);
+  line-height: 1.3;
+}
+
+.eduInst {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+
+.eduPeriod {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .eduRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

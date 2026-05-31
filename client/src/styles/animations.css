@@ -1,0 +1,68 @@
+@keyframes blink {
+  50% { opacity: 0.25; }
+}
+
+@keyframes bob {
+  50% { transform: translateY(4px); }
+}
+
+@keyframes tick {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes sweep {
+  from { top: -60px; }
+  to   { top: 100%; }
+}
+
+@keyframes thunk {
+  0%   { transform: scale(2.2) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(0.95) rotate(-2deg); opacity: 1; }
+  80%  { transform: scale(1.04) rotate(-2deg); }
+  100% { transform: scale(1) rotate(-2deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scannerSweep {
+  from { top: -60px; }
+  to   { top: 100%; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(77,255,176,.3); }
+  50%       { text-shadow: 0 0 50px rgba(77,255,176,.7), 0 0 80px rgba(77,255,176,.3); }
+}
+
+/* Clases utilitarias de animación */
+.anim-blink    { animation: blink 1.3s infinite; }
+.anim-bob      { animation: bob 1.6s infinite; }
+.anim-fadein   { animation: fadeIn 0.4s ease both; }
+.anim-slideup  { animation: slideUp 0.55s cubic-bezier(.22,.61,.36,1) both; }
+.anim-glowpulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Sistema de reveal escalonado para el hero
+   Aplica .reveal-ready al contenedor padre para activar */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(.22,.61,.36,1),
+              transform 0.6s cubic-bezier(.22,.61,.36,1);
+}
+
+.reveal-ready .reveal-item { opacity: 1; transform: translateY(0); }
+
+.reveal-item:nth-child(1) { transition-delay: 0ms; }
+.reveal-item:nth-child(2) { transition-delay: 120ms; }
+.reveal-item:nth-child(3) { transition-delay: 240ms; }
+.reveal-item:nth-child(4) { transition-delay: 360ms; }
+.reveal-item:nth-child(5) { transition-delay: 480ms; }
+.reveal-item:nth-child(6) { transition-delay: 600ms; }

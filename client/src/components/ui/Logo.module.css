@@ -1,0 +1,42 @@
+.logo {
+  font-family: var(--disp);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32em;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: clamp(16px, 1.4vw, 20px);
+  flex-shrink: 0;
+}
+
+.w {
+  color: var(--txt);
+}
+
+.brk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.06em;
+}
+
+.br {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--xeno-soft);
+}
+
+.jj {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--xeno);
+  text-shadow: 0 0 14px var(--glow);
+  padding: 0 0.04em;
+  transition: text-shadow .2s ease;
+}
+
+.logo:hover .jj {
+  text-shadow: 0 0 22px var(--glow);
+}

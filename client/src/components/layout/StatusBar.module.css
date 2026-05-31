@@ -1,0 +1,135 @@
+.statusbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 clamp(16px, 3vw, 40px);
+  height: 54px;
+  background: color-mix(in srgb, var(--void) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Nav links ── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--txt);
+  transition: background-color 0.15s, color 0.15s, opacity 0.9s ease;
+  white-space: nowrap;
+}
+
+.navLink:not(.navLocked):hover {
+  background: rgba(77, 255, 176, 0.07);
+  color: var(--xeno);
+}
+
+.navNum {
+  font-family: var(--mono);
+  color: var(--xeno);
+  font-size: 9px;
+  opacity: 0.7;
+}
+
+.navLabel {
+  font-family: var(--mono);
+}
+
+/* Nivel bloqueado — dimmed, no clickeable */
+.navLocked {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Derecha: REC + medidor ── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.rec {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rec::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+  animation: blink 1.3s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.meter {
+  display: flex;
+  gap: 3px;
+}
+
+.seg {
+  width: 16px;
+  height: 7px;
+  border: 1px solid var(--line-2);
+  border-radius: 1px;
+  background: transparent;
+  transition: background-color .5s, box-shadow .5s, border-color .5s;
+}
+
+.segOn {
+  composes: seg;
+  background: var(--xeno);
+  box-shadow: 0 0 7px var(--xeno);
+  border-color: var(--xeno);
+}
+
+.clrnum {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.clrnum b { color: var(--xeno); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navLabel { display: none; }
+  .navLink  { padding: 6px 8px; }
+  .nav      { gap: 0; }
+}
+
+@media (max-width: 520px) {
+  .nav { display: none; }
+}

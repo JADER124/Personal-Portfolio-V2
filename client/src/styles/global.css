@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Caveat:wght@600&family=Major+Mono+Display&display=swap');
+
+@import './tokens.css';
+@import './animations.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void);
+  color: var(--txt);
+  font-family: var(--mono);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--xeno);
+  color: #04130d;
+}
+
+/* ================================================================
+   TRANSICIÓN CROMÁTICA — paleta de gris a color al desbloquear
+   Cubre color, fondo y bordes. Los módulos que tienen transform
+   propio añaden sus propiedades encima de esta base.
+   ================================================================ */
+body, body *, body *::before, body *::after {
+  transition:
+    color .9s ease,
+    background-color .9s ease,
+    border-color .9s ease,
+    box-shadow .9s ease;
+}
+
+/* Accesibilidad: sin animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  body, body *, body *::before, body *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Las scanlines se atenúan al desbloquear */
+body.unlocked .scanlines { opacity: .28; }
+
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding-inline: var(--px);
+}
+
+.wrap-wide {
+  max-width: var(--wrap-wide);
+  margin: 0 auto;
+  padding-inline: var(--px);
+}
+
+.site-main {
+  position: relative;
+  z-index: 2;
+  padding-top: 54px;   /* altura exacta de la navbar */
+  padding-bottom: 20px;
+}
+
+/* Touch targets mínimos en móvil */
+@media (max-width: 480px) {
+  button, a { min-height: 44px; }
+}
+
+/* ================================================================
+   OVERLAYS AMBIENTALES (position: fixed)
+   ================================================================ */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.5;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0 2px,
+    rgba(0, 0, 0, 0.16) 2px 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 59;
+  pointer-events: none;
+  box-shadow: inset 0 0 240px rgba(0, 0, 0, 0.9);
+}
+
+/* Nébula verde — siempre presente, intensidad controlada por --glow */
+.nebula {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(820px 640px at 30% 110%, var(--glow), transparent 55%);
+}
+
+/* Nébulas de color — aparecen al desbloquear (opacity: var(--nebula-multi)) */
+.nebula-color {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--nebula-multi, 0);
+  transition: opacity .9s ease;
+  background:
+    radial-gradient(680px 460px at 86% 2%, rgba(164, 114, 255, 0.18), transparent 60%),
+    radial-gradient(620px 540px at 8% 16%, rgba(54, 230, 255, 0.12), transparent 60%);
+}
+
+/* ================================================================
+   HELPERS
+   ================================================================ */
+.tex {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+
+/* Texto censurado — se revela con body.unlocked (sin click) */
+.redact {
+  display: inline-block;
+  background: #23302b;
+  color: transparent;
+  border-radius: 2px;
+  padding: 0 6px;
+  user-select: none;
+  filter: contrast(0.5) brightness(0.6);
+}
+
+body.unlocked .redact {
+  background: transparent;
+  color: var(--ink);
+  filter: none;
+}
+
+/* Bloque censurado verde (ficha dossier) */
+.vredact {
+  background: var(--xeno-dim);
+  color: transparent;
+  border-radius: 2px;
+  user-select: none;
+  filter: contrast(0.4) brightness(0.5);
+  opacity: 0.45;
+}
+
+body.unlocked .vredact,
+.vredact.revealed {
+  background: transparent;
+  color: var(--txt);
+  filter: none;
+  opacity: 1;
+}
+
+/* ================================================================
+   SISTEMA DE REVEAL (hero fade-in escalonado)
+   ================================================================ */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(.22,.61,.36,1),
+    transform 0.6s cubic-bezier(.22,.61,.36,1),
+    color .9s ease,
+    background-color .9s ease,
+    border-color .9s ease,
+    box-shadow .9s ease;
+}
+
+.reveal-ready .reveal-item { opacity: 1; transform: translateY(0); }
+
+.reveal-item:nth-child(1) { transition-delay: 0ms; }
+.reveal-item:nth-child(2) { transition-delay: 120ms; }
+.reveal-item:nth-child(3) { transition-delay: 240ms; }
+.reveal-item:nth-child(4) { transition-delay: 360ms; }
+.reveal-item:nth-child(5) { transition-delay: 480ms; }
+.reveal-item:nth-child(6) { transition-delay: 600ms; }

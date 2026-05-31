@@ -1,0 +1,110 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 640px;
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.channel {
+  display: grid;
+  grid-template-columns: 44px 1fr 20px;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-decoration: none;
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.channel:hover {
+  border-color: var(--line-2);
+  background: rgba(77, 255, 176, 0.04);
+  transform: translateX(4px);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  color: var(--xeno);
+}
+
+.icon svg { width: 20px; height: 20px; }
+
+.channelInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.channelLabel {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.channelValue {
+  font-size: 14px;
+  color: var(--txt);
+  letter-spacing: 0.02em;
+}
+
+.arrow {
+  color: var(--dim);
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.channel:hover .arrow { color: var(--xeno); }
+
+/* Botón transmisión */
+.transmit {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transmitNote {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.transmitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #04130d;
+  background: var(--xeno);
+  border-radius: 10px;
+  padding: 14px 28px;
+  text-decoration: none;
+  box-shadow: 0 0 24px -6px var(--xeno);
+  transition: 0.2s;
+  align-self: flex-start;
+}
+
+.transmitBtn:hover {
+  background: #7dffc7;
+  box-shadow: 0 0 36px -4px var(--xeno);
+}

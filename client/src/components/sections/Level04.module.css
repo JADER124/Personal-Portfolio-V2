@@ -1,0 +1,124 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px 24px 1fr;
+  gap: 0 20px;
+  position: relative;
+  padding-bottom: 36px;
+}
+
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .left {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+  }
+  .period { text-align: left; }
+  /* El punto ocupa ambas filas para que la línea vertical baje correctamente */
+  .dot {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    margin-top: 4px;
+  }
+  .right { grid-column: 2; grid-row: 2; }
+}
+
+.left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.period {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* Dot + vertical line */
+.dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.dot::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--xeno);
+  box-shadow: 0 0 10px var(--xeno);
+  flex-shrink: 0;
+}
+
+.dot::after {
+  content: '';
+  flex: 1;
+  width: 1px;
+  background: var(--line-2);
+  margin-top: 6px;
+}
+
+.timeline .row:last-child .dot::after {
+  display: none;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role {
+  font-family: var(--disp);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--txt);
+  letter-spacing: -0.01em;
+}
+
+.company {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--xeno);
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 2px 8px;
+}

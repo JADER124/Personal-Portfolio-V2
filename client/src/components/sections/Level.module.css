@@ -1,0 +1,67 @@
+.level {
+  padding: clamp(50px, 8vh, 90px) 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+  /* Compensa la barra fija (StatusBar ~42px + Ticker ~28px) al hacer scrollIntoView */
+  scroll-margin-top: 64px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.number {
+  font-family: var(--disp);
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--faint);
+  letter-spacing: -0.02em;
+}
+
+.title {
+  font-family: var(--disp);
+  font-size: clamp(22px, 3.4vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--xeno);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 4px 11px;
+  align-self: center;
+}
+
+.desc {
+  color: var(--dim);
+  font-size: 14px;
+  max-width: 64ch;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Content bloqueado */
+.content {
+  transition:
+    filter 0.4s ease,
+    opacity 0.4s ease,
+    color .9s ease,
+    background-color .9s ease,
+    border-color .9s ease,
+    box-shadow .9s ease;
+}
+
+.content.locked {
+  filter: blur(9px) brightness(0.5);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}

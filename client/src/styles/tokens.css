@@ -1,0 +1,94 @@
+/* ================================================================
+   ESTADO BLOQUEADO — por defecto, blanco y negro
+   Toda la paleta es gris neutro. Solo --xeno tiene un leve verde
+   como anchor visual. Al agregar body.unlocked todo pasa a color.
+   ================================================================ */
+:root {
+  /* Fondos — no cambian */
+  --void: #070b0a;
+  --void2: #0b1311;
+  --desk: #0a100e;
+  --panel: rgba(12, 22, 20, 0.55);
+
+  /* Acentos — TODOS grises/neutros en estado bloqueado */
+  --xeno: #6abf99;        /* verde muy apagado — el único hint de color que queda */
+  --xeno-soft: #4a8a6a;   /* llaves del logo en locked */
+  --xeno-dim: #3a6b55;
+  --cyan: #7a8a87;        /* gris azulado neutro */
+  --violet: #6e6c78;      /* gris violáceo neutro */
+  --amber: #78766e;       /* gris cálido neutro */
+  --stamp: #5e5d5a;       /* gris oscuro neutro */
+
+  /* Papel — gris frío */
+  --paper: #9e9e9b;
+  --paper2: #929290;
+  --kraft: #888885;
+  --kraft2: #7e7e7c;
+  --ink: #1e1e1c;
+  --inkdim: #424240;
+  --green-ink: #2a3a32;
+
+  /* Foto — blanco y negro puro */
+  --photo-filter: grayscale(1) brightness(.55) contrast(1.1);
+
+  /* Glow y nébulas — completamente apagados */
+  --glow: rgba(100, 120, 110, 0.15);
+  --nebula-multi: 0;
+
+  /* Líneas — gris muy sutil */
+  --line: rgba(140, 140, 140, 0.14);
+  --line-2: rgba(140, 140, 140, 0.26);
+
+  /* Texto — no cambia */
+  --txt: #c8c8c6;         /* blanco cálido neutro */
+  --dim: #6a6a68;
+  --faint: #3a3a38;
+
+  /* Sombras */
+  --shadow-card: 0 26px 50px -16px rgba(0, 0, 0, 0.75);
+  --shadow-xeno: 0 0 60px -20px var(--glow);
+  --glow-xeno: 0 0 34px var(--glow);
+  --glow-amber: 0 0 8px var(--amber);
+
+  /* Tipografía — no cambia */
+  --disp: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --tw: 'Special Elite', monospace;
+  --cr: 'Courier Prime', monospace;
+  --hand: 'Caveat', cursive;
+  --major: 'Major Mono Display', monospace;
+
+  /* Layout — no cambia */
+  --wrap: 1080px;
+  --wrap-wide: 1160px;
+  --px: clamp(14px, 3.5vw, 40px);
+}
+
+/* ================================================================
+   ESTADO DESBLOQUEADO — body.unlocked
+   Toda la paleta explota en color en ~0.9s
+   ================================================================ */
+body.unlocked {
+  --xeno: #4dffb0;
+  --xeno-soft: #39c98c;
+  --xeno-dim: #2c9d75;
+  --cyan: #36e6ff;
+  --violet: #a472ff;
+  --amber: #ffb000;
+  --stamp: #c9381f;
+  --paper: #e9e1cf;
+  --paper2: #ded3b8;
+  --kraft: #cbb98f;
+  --kraft2: #bdab7e;
+  --ink: #241d12;
+  --inkdim: #5e5238;
+  --green-ink: #1f5d3a;
+  --photo-filter: none;
+  --glow: rgba(77, 255, 176, 0.4);
+  --nebula-multi: 1;
+  --line: rgba(77, 255, 176, 0.16);
+  --line-2: rgba(77, 255, 176, 0.32);
+  --txt: #cfe9df;
+  --dim: #6f8a82;
+  --faint: #3f5650;
+}
