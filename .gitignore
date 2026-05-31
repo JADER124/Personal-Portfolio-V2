@@ -30,3 +30,9 @@ Thumbs.db
 # Cache
 .cache/
 .parcel-cache/
+
+# Claude Code (contexto local, no subir)
+.claude/
+
+# GitHub Copilot instructions (privado)
+.github/
