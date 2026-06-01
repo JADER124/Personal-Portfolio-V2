@@ -4,7 +4,7 @@ Portafolio personal interactivo con la temática de un **expediente alienígena 
 
 > **Concepto:** el "espécimen no identificado" es el propio desarrollador. Cada sección es un nivel del expediente — identificación, perfil, capacidades, formación, experiencia y contacto — que se revela con un efecto de descifrado.
 
-**Demo en vivo:** _próximamente_ · **Autor:** Jhon Jader López Blandón — Desarrollador Full-Stack & Data Engineer
+**Demo en vivo:** [personal-portfolio-v2-three.vercel.app](https://personal-portfolio-v2-three.vercel.app) · **Autor:** Jhon Jader López Blandón — Desarrollador Full-Stack & Data Engineer
 
 ---
 
