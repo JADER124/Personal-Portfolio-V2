@@ -6,11 +6,11 @@ type Props = { trigger: boolean }
 const NOTES = [
   {
     label: 'naturaleza del sujeto',
-    text: 'Entidad apasionada por la tecnología y el desarrollo de software. Formada en sistemas e ingeniería de software con experiencia real en soporte técnico, desarrollo web y automatización de procesos. Curiosidad temprana documentada — desarmaba dispositivos electrónicos antes de comprender su propósito.',
+    text: 'Entidad apasionada por la tecnología y el desarrollo de software. Formada en sistemas e ingeniería de software con experiencia real en soporte técnico, desarrollo web y automatización de procesos. Tendencia documentada a invertir en los cimientos: código limpio, estructuras escalables, decisiones que no exigen ser rehechas más adelante.',
   },
   {
     label: 'comportamiento técnico',
-    text: 'Opera con fluidez en JavaScript, React, Python y SQL. Despliega y gestiona entornos con Git, Docker, AWS y Google Cloud. Capacidad de moverse entre capas: desde la interfaz hasta el pipeline de datos.',
+    text: 'Opera con fluidez en JavaScript, React, Python y SQL. Despliega y gestiona entornos con Git, Docker, AWS y Google Cloud. Capacidad de moverse entre capas: desde la primera línea de código hasta la interfaz final.',
   },
   {
     label: 'objetivo declarado',
@@ -87,9 +87,9 @@ export default function SobreMi({ trigger }: Props) {
           <div className={styles.frameFoot}>
             <span className={styles.frameFootLabel}>// enfoque del espécimen</span>
             <p className={styles.frameFootText}>
-              De la interfaz al pipeline:{' '}
-              <b>arquitectura, automatización y todo el ciclo de vida del software</b>,
-              con foco en la claridad.
+              <b>Arquitectura, automatización y trazabilidad</b>, con el objetivo
+              de entregar algo que genere valor — no solo código que funcione,
+              sino soluciones que se usen.
             </p>
           </div>
         </div>

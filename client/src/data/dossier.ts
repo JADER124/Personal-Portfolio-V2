@@ -40,40 +40,6 @@ export const skills: Skill[] = [
   { label: 'Postman', intensity: 80, category: 'tools' },
 ]
 
-export type Project = {
-  id: string
-  title: string
-  classification: string
-  description: string
-  tags: string[]
-  link?: string
-  repo?: string
-}
-
-export const projects: Project[] = [
-  {
-    id: 'proj-01',
-    title: 'ARTEFACTO 01',
-    classification: 'SITIO WEB · CLIENTE',
-    description: 'Sitio web para cliente — diseño a medida, SEO optimizado y alto rendimiento. Agrega tu proyecto real aquí.',
-    tags: ['React', 'CSS', 'Vite'],
-  },
-  {
-    id: 'proj-02',
-    title: 'ARTEFACTO 02',
-    classification: 'APP FULL-STACK',
-    description: 'Aplicación full-stack propia con autenticación, base de datos y API REST. Agrega tu proyecto real aquí.',
-    tags: ['Node.js', 'React', 'MongoDB'],
-  },
-  {
-    id: 'proj-03',
-    title: 'ARTEFACTO 03',
-    classification: 'PIPELINE DE DATOS · AWS',
-    description: 'Pipeline ETL en AWS: S3 → Glue → Athena con infraestructura como código. Agrega tu proyecto real aquí.',
-    tags: ['AWS Glue', 'Python', 'CloudFormation'],
-  },
-]
-
 export type Experience = {
   id: string
   period: string
@@ -113,40 +79,6 @@ export const experience: Experience[] = [
   },
 ]
 
-export type Education = {
-  id: string
-  degree: string
-  institution: string
-  period: string
-}
-
-export const education: Education[] = [
-  {
-    id: 'edu-01',
-    degree: 'Ingeniería en Desarrollo de Software',
-    institution: 'Tecnológico de Antioquia',
-    period: '2024 – En curso',
-  },
-  {
-    id: 'edu-02',
-    degree: 'Tecnología en Sistemas',
-    institution: 'Tecnológico de Antioquia',
-    period: '2021 – 2023',
-  },
-  {
-    id: 'edu-03',
-    degree: 'Técnica Profesional en Sistemas',
-    institution: 'Tecnológico de Antioquia',
-    period: '2021 – 2022',
-  },
-  {
-    id: 'edu-04',
-    degree: 'React Advanced Patterns',
-    institution: 'Frontend Masters',
-    period: '2024',
-  },
-]
-
 export type Contact = {
   id: string
   channel: string
@@ -173,8 +105,8 @@ export const contact: Contact[] = [
   {
     id: 'contact-linkedin',
     channel: 'RED DE CONTACTOS',
-    label: 'linkedin.com/in/jader-lopez',
-    href: 'https://linkedin.com/in/jader-lopez',
+    label: 'linkedin.com/in/jhon-jader-lopez-blandon',
+    href: 'https://www.linkedin.com/in/jhon-jader-lopez-blandon-5751a6236',
     icon: 'linkedin',
   },
 ]

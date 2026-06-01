@@ -27,24 +27,21 @@ export default function StarField() {
       }))
     }
 
-    function getStarColor(alpha: number): string {
-      // Lee si body tiene la clase unlocked para colorear las estrellas
-      const unlocked = document.body.classList.contains('unlocked')
-      return unlocked
-        ? `rgba(207,233,223,${alpha})`   // tono verde suave al desbloquear
-        : `rgba(200,200,198,${alpha})`   // blanco neutro en B&W
-    }
-
     function draw(t: number) {
       if (!canvas || !ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      // Lee el estado del DOM una sola vez por frame (no por estrella):
+      // tono verde suave al desbloquear, blanco neutro en B&N.
+      const rgb = document.body.classList.contains('unlocked')
+        ? '207,233,223'
+        : '200,200,198'
       for (const s of stars) {
         s.y += s.speed
         if (s.y > canvas.height) s.y = 0
         const alpha = 0.35 + 0.55 * Math.abs(Math.sin(t * 0.0008 + s.phase))
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
-        ctx.fillStyle = getStarColor(alpha)
+        ctx.fillStyle = `rgba(${rgb},${alpha})`
         ctx.fill()
       }
       raf = requestAnimationFrame(draw)

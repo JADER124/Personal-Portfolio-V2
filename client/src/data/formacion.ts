@@ -50,7 +50,8 @@ export const languages: Language[] = [
 ]
 
 export const certs: Cert[] = [
-  { name: 'React Advanced Patterns', org: 'Frontend Masters', year: '2024' },
-  { name: 'Agrega tu certificado',   org: '—',               year: '—', placeholder: true },
-  { name: 'Agrega tu certificado',   org: '—',               year: '—', placeholder: true },
+  { name: 'AWS Cloud Practitioner',      org: 'entrenaAQ · powered by AWS', year: '2025' },
+  { name: 'Terraform · IaC en AWS',      org: 'Udemy',                      year: '2025' },
+  { name: 'Bases de Datos · SQL Server', org: 'Udemy',                      year: '2025' },
+  { name: 'Automatización con IA · n8n', org: 'Udemy',                      year: '2026' },
 ]

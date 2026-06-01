@@ -7,13 +7,19 @@ type Props = {
 }
 
 const NAV_ITEMS = [
-  { href: '#level-01', label: 'ID.',        num: '01' },
-  { href: '#level-02', label: 'Perfil',     num: '02' },
-  { href: '#level-03', label: 'Skills',     num: '03' },
-  { href: '#level-04', label: 'Formación',  num: '04' },
-  { href: '#level-05', label: 'Exp.',       num: '05' },
-  { href: '#level-06', label: 'Contacto',   num: '06' },
+  { id: 'level-01', label: 'ID.',        num: '01' },
+  { id: 'level-02', label: 'Perfil',     num: '02' },
+  { id: 'level-03', label: 'Skills',     num: '03' },
+  { id: 'level-04', label: 'Formación',  num: '04' },
+  { id: 'level-05', label: 'Exp.',       num: '05' },
+  { id: 'level-06', label: 'Contacto',   num: '06' },
 ]
+
+// Scroll suave manual: lleva la sección a la vista sin dejar el hash (#level-0X)
+// pegado en la URL — la barra de direcciones se mantiene limpia (home).
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 export default function StatusBar({ granted, total }: Props) {
   return (
@@ -24,12 +30,17 @@ export default function StatusBar({ granted, total }: Props) {
 
       {/* Nav links — dimmed si el nivel está bloqueado */}
       <nav className={styles.nav} aria-label="Secciones del expediente">
-        {NAV_ITEMS.map(({ href, label, num }, i) => {
+        {NAV_ITEMS.map(({ id, label, num }, i) => {
           const locked = i >= granted
           return (
             <a
-              key={href}
-              href={locked ? undefined : href}
+              key={id}
+              href={locked ? undefined : `#${id}`}
+              onClick={(e) => {
+                if (locked) return
+                e.preventDefault()
+                scrollToSection(id)
+              }}
               className={`${styles.navLink} ${locked ? styles.navLocked : ''}`}
               aria-disabled={locked}
               tabIndex={locked ? -1 : 0}

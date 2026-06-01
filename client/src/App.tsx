@@ -71,6 +71,7 @@ export default function App() {
           scanMsg={scanMsg}
           onAuthorize={authorize}
           isMaxed={isMaxed}
+          photoSrc="/perfil.jpg"
         />
 
         <Level

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="neb1" cx="82%" cy="8%" r="55%">
+      <stop offset="0%" stop-color="#a472ff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#a472ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="neb2" cx="12%" cy="95%" r="60%">
+      <stop offset="0%" stop-color="#4dffb0" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#4dffb0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="#070b0a"/>
+  <rect width="1200" height="630" fill="url(#neb1)"/>
+  <rect width="1200" height="630" fill="url(#neb2)"/>
+
+  <!-- Marco HUD esquinas -->
+  <g stroke="#4dffb0" stroke-width="3" fill="none" opacity="0.85">
+    <path d="M50 92 L50 50 L92 50"/>
+    <path d="M1150 92 L1150 50 L1108 50"/>
+    <path d="M50 538 L50 580 L92 580"/>
+    <path d="M1150 538 L1150 580 L1108 580"/>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="100" y="170" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" letter-spacing="6" fill="#36e6ff">EXPEDIENTE-DEV // SECTOR TIERRA</text>
+
+  <!-- Título principal -->
+  <text x="98" y="290" font-family="'Space Grotesk', Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-2" fill="#cfe9df">ESPÉCIMEN</text>
+  <text x="98" y="392" font-family="'Space Grotesk', Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-2" fill="#4dffb0">NO IDENTIFICADO</text>
+
+  <!-- Nombre + rol -->
+  <text x="100" y="470" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="28" fill="#cfe9df">Jhon Jader López</text>
+  <text x="100" y="510" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" fill="#7a8d86">Desarrollador Full-Stack &amp; Data Engineer · Medellín</text>
+
+  <!-- Marca {JJ} Dev -->
+  <text x="100" y="565" font-family="'Space Grotesk', Arial, sans-serif" font-size="26" font-weight="700" fill="#cfe9df">Use <tspan fill="#39c98c" font-family="monospace">{</tspan><tspan fill="#4dffb0" font-family="monospace" font-weight="700">JJ</tspan><tspan fill="#39c98c" font-family="monospace">}</tspan> Dev</text>
+
+  <!-- REC indicator -->
+  <g>
+    <circle cx="1058" cy="160" r="7" fill="#ffb000"/>
+    <text x="1075" y="167" font-family="'JetBrains Mono', monospace" font-size="20" letter-spacing="3" fill="#ffb000">REC</text>
+  </g>
+</svg>
