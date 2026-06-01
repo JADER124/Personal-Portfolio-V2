@@ -3,15 +3,17 @@ import StarField from './components/effects/StarField'
 import StatusBar from './components/layout/StatusBar'
 import Footer from './components/layout/Footer'
 import HeroAccess from './components/sections/HeroAccess'
+import SobreMi from './components/sections/SobreMi'
+import ScannerFab from './components/ui/ScannerFab'
+import Formacion from './components/sections/Formacion'
 import Level from './components/sections/Level'
 import Level01 from './components/sections/Level01'
 import Level02 from './components/sections/Level02'
-import Level03 from './components/sections/Level03'
 import Level04 from './components/sections/Level04'
 import Level05 from './components/sections/Level05'
 import { useAuthorization } from './hooks/useAuthorization'
 
-const TOTAL = 5
+const TOTAL = 6
 
 function useChromatiUnlock(granted: number) {
   useEffect(() => {
@@ -80,39 +82,55 @@ export default function App() {
         </Level>
 
         <Level
-          number="02" title="Capacidades Anómalas" tag="SKILLS · NIVEL Ω"
-          description="Registro de habilidades no convencionales detectadas en el espécimen durante observación en campo."
+          number="02" title="Perfil del Espécimen" tag="SOBRE MÍ"
+          description="Notas de observación de campo compiladas por la División Ultra Secreta. Registro de comportamiento, naturaleza y objetivos."
           isLocked={granted < 2} required={2} total={TOTAL} onUnlock={authorize}
         >
-          <Level02 trigger={granted >= 2} />
+          <SobreMi trigger={granted >= 2} />
         </Level>
 
         <Level
-          number="03" title="Artefactos Recuperados" tag="PROYECTOS"
-          description="Objetos de origen desconocido atribuidos al espécimen. Capacidades tecnológicas avanzadas confirmadas."
+          number="03" title="Capacidades Anómalas" tag="SKILLS · NIVEL Ω"
+          description="Registro de habilidades no convencionales detectadas en el espécimen durante observación en campo."
           isLocked={granted < 3} required={3} total={TOTAL} onUnlock={authorize}
         >
-          <Level03 trigger={granted >= 3} />
+          <Level02 trigger={granted >= 3} />
         </Level>
 
         <Level
-          number="04" title="Registro de Avistamientos" tag="EXPERIENCIA"
-          description="Cronología de avistamientos confirmados y actividad documentada del espécimen en territorio terrestre."
+          number="04" title="Secuencia Evolutiva" tag="FORMACIÓN"
+          description="Registro cronológico de las mutaciones cognitivas del espécimen: adquisición progresiva de conocimiento, protocolos de comunicación y adaptaciones certificadas."
           isLocked={granted < 4} required={4} total={TOTAL} onUnlock={authorize}
         >
-          <Level04 trigger={granted >= 4} />
+          <Formacion trigger={granted >= 4} />
         </Level>
 
         <Level
-          number="05" title="Protocolo de Contacto" tag="CONTACTO"
-          description="Canal de comunicación oficial con el espécimen. Transmisión cifrada. Respuesta garantizada."
+          number="05" title="Registro de Avistamientos" tag="EXPERIENCIA"
+          description="Cronología de avistamientos confirmados y actividad documentada del espécimen en territorio terrestre."
           isLocked={granted < 5} required={5} total={TOTAL} onUnlock={authorize}
         >
-          <Level05 trigger={granted >= 5} />
+          <Level04 trigger={granted >= 5} />
+        </Level>
+
+        <Level
+          number="06" title="Protocolo de Contacto" tag="CONTACTO"
+          description="Canal de comunicación oficial con el espécimen. Transmisión cifrada. Respuesta garantizada."
+          isLocked={granted < 6} required={6} total={TOTAL} onUnlock={authorize}
+        >
+          <Level05 trigger={granted >= 6} />
         </Level>
       </main>
 
       <Footer />
+
+      <ScannerFab
+        granted={granted}
+        total={TOTAL}
+        scanning={scanning}
+        isMaxed={isMaxed}
+        onAuthorize={authorize}
+      />
     </>
   )
 }

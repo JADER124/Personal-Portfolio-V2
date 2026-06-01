@@ -43,6 +43,12 @@
   line-height: 1.4;
 }
 
+.red {
+  color: var(--stamp);
+  text-shadow: 0 0 18px rgba(201, 56, 31, 0.45);
+  transition: color .9s ease, text-shadow .9s ease;
+}
+
 /* ── Educación ── */
 .eduSection {
   display: flex;

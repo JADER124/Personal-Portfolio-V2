@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react'
 import { identity } from '../../data/dossier'
 import { useHeroReveal } from '../../hooks/useHeroReveal'
+import DecodeText from '../ui/DecodeText'
 import styles from './HeroAccess.module.css'
 
 type Props = {
@@ -15,35 +15,15 @@ type Props = {
 type Field = {
   key: string
   cipher: string
-  real: ReactNode
+  real: string
   green: boolean
 }
 
 const FIELDS: Field[] = [
-  {
-    key: 'Designación',
-    cipher: '▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓',
-    real: <>{identity.fullName}</>,
-    green: true,
-  },
-  {
-    key: 'Forma',
-    cipher: '▓▓▓▓▓▓▓  ·  ▓▓▓▓▓▓  ·  ▓▓▓▓▓',
-    real: 'Carbono · código · nube',
-    green: false,
-  },
-  {
-    key: 'Origen',
-    cipher: '▓▓▓▓▓▓▓▓,  ▓▓▓▓▓▓▓▓',
-    real: identity.origin,
-    green: false,
-  },
-  {
-    key: 'Estado',
-    cipher: '▓▓▓▓▓▓  ·  ▓▓▓▓▓▓▓▓▓▓',
-    real: identity.status,
-    green: true,
-  },
+  { key: 'Designación', cipher: '▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓', real: identity.fullName,          green: true  },
+  { key: 'Composición', cipher: '▓▓▓▓▓▓▓▓  ·  ▓▓▓▓▓▓  ·  ▓▓▓▓▓', real: 'Cafeína · código · nube', green: false },
+  { key: 'Origen',      cipher: '▓▓▓▓▓▓▓▓,  ▓▓▓▓▓▓▓▓',          real: identity.origin,          green: false },
+  { key: 'Estado',      cipher: '▓▓▓▓▓▓  ·  ▓▓▓▓▓▓▓▓▓▓',         real: identity.status,          green: true  },
 ]
 
 export default function HeroAccess({ granted, scanning, scanMsg, onAuthorize, isMaxed, photoSrc }: Props) {
@@ -69,9 +49,9 @@ export default function HeroAccess({ granted, scanning, scanMsg, onAuthorize, is
         </h1>
 
         <p className={`${styles.sub} reveal-item`}>
-          Registro clasificado de una entidad anómala detectada construyendo software a <b>velocidad no humana</b>.<br />
-          Designación interna: <b>JADER</b> · División <span className={styles.subXeno}>Ultra Secreta</span>.<br />
-          Acceso restringido — autorización requerida para revelar los datos.
+          Registro clasificado de una entidad anómala detectada construyendo software a <b>velocidad no humana</b>.<br className={styles.brDesktop} />
+          {' '}Designación interna: <b>JADER</b> · División <span className={styles.subXeno}>Ultra Secreta</span>.<br className={styles.brDesktop} />
+          {' '}Acceso restringido — autorización requerida para revelar los datos.
         </p>
 
         {/* Ficha / dossier card */}
@@ -82,12 +62,12 @@ export default function HeroAccess({ granted, scanning, scanMsg, onAuthorize, is
           </div>
 
           <div className={styles.rows}>
-            {FIELDS.map(({ key, cipher, real, green }) => (
+            {FIELDS.map(({ key, cipher, real, green }, i) => (
               <>
                 <span key={`k-${key}`} className={styles.k}>{key}</span>
                 <span key={`v-${key}`} className={`${styles.v} ${green ? styles.vGreen : ''}`}>
                   {unlocked
-                    ? real
+                    ? <DecodeText text={real} trigger={unlocked} delay={i * 100} />
                     : <span className={styles.cipher}>{cipher}</span>
                   }
                 </span>

@@ -7,11 +7,12 @@ type Props = {
 }
 
 const NAV_ITEMS = [
-  { href: '#level-01', label: 'Identificación',  num: '01' },
-  { href: '#level-02', label: 'Capacidades',     num: '02' },
-  { href: '#level-03', label: 'Proyectos',        num: '03' },
-  { href: '#level-04', label: 'Experiencia',      num: '04' },
-  { href: '#level-05', label: 'Contacto',         num: '05' },
+  { href: '#level-01', label: 'ID.',        num: '01' },
+  { href: '#level-02', label: 'Perfil',     num: '02' },
+  { href: '#level-03', label: 'Skills',     num: '03' },
+  { href: '#level-04', label: 'Formación',  num: '04' },
+  { href: '#level-05', label: 'Exp.',       num: '05' },
+  { href: '#level-06', label: 'Contacto',   num: '06' },
 ]
 
 export default function StatusBar({ granted, total }: Props) {
